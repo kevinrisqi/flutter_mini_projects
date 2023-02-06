@@ -1,26 +1,23 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_mini_projects/routes/route_name.dart';
+import 'package:get/get.dart';
 
 import '../../properties/color.dart';
 import '../../properties/size.dart';
 import '../../widgets/custom_list_tile.dart';
 import '../../widgets/custom_text.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        title: Text('Dashboard'),
+        title: const Text('Dashboard'),
         backgroundColor: foregroundColor,
       ),
       body: ListView(
@@ -35,6 +32,7 @@ class _HomePageState extends State<HomePage> {
             subtitle: 'This is example to create form validation',
             ontap: () {
               log('Validation Form has Triggered');
+              Get.toNamed(RouteName.formValidation);
             },
           ),
           customListTile(),
