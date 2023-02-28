@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-Widget customText({
-  String? title,
+Widget customText(String title,{
   double? fontSize,
   FontWeight? fontWeight,
   Color? color,
   TextAlign? textAlign,
 }) {
   return Text(
-    title ?? '',
+    title,
     textAlign: textAlign,
     style: TextStyle(
       fontSize: fontSize ?? 14,

@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
         children: [
-          customText(title: 'Welcome,\nKevin', fontSize: FontSize.s18),
+          customText( 'Welcome,\nKevin', fontSize: FontSize.s18),
           SizedBox(
             height: padding * 2,
           ),
@@ -35,7 +35,15 @@ class HomePage extends StatelessWidget {
               Get.toNamed(RouteName.formValidation);
             },
           ),
-          customListTile(),
+          customListTile(
+            title: 'Handle No Connection',
+            subtitle:
+                'This method is used to handle applicaton when there is no connection internet',
+            ontap: () {
+              log('Handle no connection has triggered');
+              Get.toNamed(RouteName.noConnection);
+            },
+          ),
         ],
       ),
     );

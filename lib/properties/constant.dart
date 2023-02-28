@@ -1,0 +1,1 @@
+const String noConnectionLottie = 'assets/lotties/no_connection.json';

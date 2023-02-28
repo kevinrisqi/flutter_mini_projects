@@ -1,12 +1,8 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_mini_projects/properties/color.dart';
-import 'package:flutter_mini_projects/properties/size.dart';
+import 'package:flutter_mini_projects/routes/bindings.dart';
 import 'package:flutter_mini_projects/routes/route.dart';
 import 'package:flutter_mini_projects/routes/route_name.dart';
-import 'package:flutter_mini_projects/widgets/custom_list_tile.dart';
-import 'package:flutter_mini_projects/widgets/custom_text.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -23,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: RouteName.home,
       getPages: pages,
-      
+      initialBinding: HomeBinding(),
     );
   }
 }
