@@ -5,4 +5,6 @@ class GlobalController extends GetxController {
   var firstNameController = TextEditingController();
   var lastNameController = TextEditingController();
   var emailController = TextEditingController();
+
+  final formKey = GlobalKey<FormState>();
 }

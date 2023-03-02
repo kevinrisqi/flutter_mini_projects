@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
         children: [
-          customText( 'Welcome,\nKevin', fontSize: FontSize.s18),
+          customText('Welcome,\nKevin', fontSize: FontSize.s18),
           SizedBox(
             height: padding * 2,
           ),
@@ -42,6 +42,15 @@ class HomePage extends StatelessWidget {
             ontap: () {
               log('Handle no connection has triggered');
               Get.toNamed(RouteName.noConnection);
+            },
+          ),
+          customListTile(
+            title: 'Handle Permission',
+            subtitle:
+                'This method is used to handle permission to access location, contacts, etc',
+            ontap: () {
+              log('Handle permission has triggered');
+              Get.toNamed(RouteName.handlePermission);
             },
           ),
         ],
