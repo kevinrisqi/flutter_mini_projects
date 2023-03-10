@@ -53,6 +53,15 @@ class HomePage extends StatelessWidget {
               Get.toNamed(RouteName.handlePermission);
             },
           ),
+          customListTile(
+            title: 'Scrollable List',
+            subtitle:
+                'This method is used to going spesific index',
+            ontap: () {
+              log('Handle Scrollable has triggered');
+              Get.toNamed(RouteName.scrollable);
+            },
+          ),
         ],
       ),
     );

@@ -3,6 +3,7 @@ import 'package:flutter_mini_projects/pages/form_validation/form_validation_cont
 import 'package:flutter_mini_projects/pages/handle_permission/handle_permission_controller.dart';
 import 'package:flutter_mini_projects/pages/home/home_controller.dart';
 import 'package:flutter_mini_projects/pages/no_connection/no_connection_controller.dart';
+import 'package:flutter_mini_projects/pages/scrollable_list/scrollable_list_controller.dart';
 import 'package:get/get.dart';
 
 class HomeBinding implements Bindings {
@@ -30,5 +31,11 @@ class HandlePermissionBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => HandlePermissionController());
+  }
+}
+class ScrollableListBinding implements Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut(() => ScrollableListController());
   }
 }

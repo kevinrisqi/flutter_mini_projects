@@ -23,7 +23,9 @@ class HandlePermissionPage extends StatelessWidget {
           children: [
             ListTile(
               onTap: () {
-                log('List pressed');
+                // log('Permission Contact: ${c.hasPermissionContact}');
+                // c.changePermissionContact();
+                c.getPermissionContact();
               },
               title: customText(
                 'Access permission to get contact',
@@ -31,7 +33,9 @@ class HandlePermissionPage extends StatelessWidget {
                 fontSize: Sizes.s15,
               ),
               trailing: Icon(
-                (c.hasPermissionContact ?? false) ? Icons.check_box : Icons.check,
+                (c.hasPermissionContact ?? false)
+                    ? Icons.check_box
+                    : Icons.check_box_outline_blank,
                 color: Colors.green,
               ),
             ),
