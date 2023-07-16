@@ -3,8 +3,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_mini_projects/properties/color.dart';
 import 'package:flutter_mini_projects/properties/size.dart';
 import 'package:flutter_mini_projects/widgets/custom_appbar.dart';
+import 'package:flutter_mini_projects/widgets/custom_snackbar.dart';
 import 'package:flutter_mini_projects/widgets/custom_text.dart';
 import 'package:get/get.dart';
 
@@ -25,10 +27,10 @@ class HandlePermissionPage extends StatelessWidget {
               onTap: () {
                 // log('Permission Contact: ${c.hasPermissionContact}');
                 // c.changePermissionContact();
-                c.getPermissionContact();
+                c.getContact();
               },
               title: customText(
-                'Access permission to get contact',
+                'Access Contact',
                 fontWeight: FontWeight.w500,
                 fontSize: Sizes.s15,
               ),
@@ -36,7 +38,23 @@ class HandlePermissionPage extends StatelessWidget {
                 (c.hasPermissionContact ?? false)
                     ? Icons.check_box
                     : Icons.check_box_outline_blank,
-                color: Colors.green,
+                color: primaryColor,
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                // c.getPermissionContact();
+              },
+              title: customText(
+                'Access Storage & Photos',
+                fontWeight: FontWeight.w500,
+                fontSize: Sizes.s15,
+              ),
+              trailing: Icon(
+                (c.hasPermissionPhotos ?? false)
+                    ? Icons.check_box
+                    : Icons.check_box_outline_blank,
+                color: primaryColor,
               ),
             ),
           ],

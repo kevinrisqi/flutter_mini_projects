@@ -1,9 +1,13 @@
 import 'package:flutter_mini_projects/global/controller/global_controller.dart';
+import 'package:flutter_mini_projects/pages/agora_video_call/agora_video_call_controller.dart';
+import 'package:flutter_mini_projects/pages/countdown_timer/countdown_timer_controller.dart';
+import 'package:flutter_mini_projects/pages/expansion_tile/expansion_tile_controller.dart';
 import 'package:flutter_mini_projects/pages/form_validation/form_validation_controller.dart';
 import 'package:flutter_mini_projects/pages/handle_permission/handle_permission_controller.dart';
 import 'package:flutter_mini_projects/pages/home/home_controller.dart';
 import 'package:flutter_mini_projects/pages/no_connection/no_connection_controller.dart';
 import 'package:flutter_mini_projects/pages/scrollable_list/scrollable_list_controller.dart';
+import 'package:flutter_mini_projects/pages/timeline_tile/timeline_tile_controller.dart';
 import 'package:get/get.dart';
 
 class HomeBinding implements Bindings {
@@ -37,5 +41,29 @@ class ScrollableListBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => ScrollableListController());
+  }
+}
+class CountdownTimerBinding implements Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut(() => CountDownController());
+  }
+}
+class ExpansionTileBinding implements Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut(() => ExpansionTileController());
+  }
+}
+class AgoraVideoCallBinding implements Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut(() => AgoraVideoCallController());
+  }
+}
+class TimelineTileBinding implements Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut(() => TimelineTileController());
   }
 }

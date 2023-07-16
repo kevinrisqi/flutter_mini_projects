@@ -9,7 +9,7 @@ class DataStoreService {
     await prefBox.put('hasPermissionContact', value);
   }
 
-  static Future<bool> get hasPermissionContact async {
+  static Future<bool> get getPermissionContact async {
     return prefBox.get('hasPermissionContact');
   }
 }

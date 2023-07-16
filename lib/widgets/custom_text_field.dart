@@ -9,16 +9,22 @@ import '../properties/size.dart';
 class customTextField extends StatelessWidget {
   TextEditingController? controller;
   String? hintText;
-  String? error;
   int? maxLength;
   AutovalidateMode? autovalidateMode;
+  String? Function(String?)? validator;
+  Function(String)? onFieldSubmitted;
+  double? height;
+  int? maxLines;
 
   customTextField({
     this.controller,
     this.hintText,
-    this.error,
     this.maxLength,
     this.autovalidateMode,
+    this.validator,
+    this.onFieldSubmitted,
+    this.height,
+    this.maxLines,
     Key? key,
   }) : super(key: key);
 
@@ -27,38 +33,31 @@ class customTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TextFormField(
-          controller: controller,
-          maxLength: maxLength,
-          autovalidateMode: autovalidateMode,
-          validator: (value) {
-            if (value == null) {
-              return '$error';
-            }
-            return null;
-          },
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(
-              vertical: padding / 2,
-              horizontal: padding / 2,
-            ),
-            hintText: hintText,
-            border: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: foregroundColor,
-                width: 10,
-                style: BorderStyle.solid,
+        Container(
+          height: height ?? 35,
+          child: TextFormField(
+            maxLines: maxLines ?? 1,
+            controller: controller,
+            maxLength: maxLength,
+            autovalidateMode: autovalidateMode,
+            validator: validator,
+            onFieldSubmitted: onFieldSubmitted,
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.symmetric(
+                vertical: padding / 2,
+                horizontal: padding / 2,
+              ),
+              hintText: hintText,
+              border: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: foregroundColor,
+                  width: 10,
+                  style: BorderStyle.solid,
+                ),
               ),
             ),
           ),
         ),
-        if (error != null) ...[
-          Padding(
-            padding: EdgeInsets.only(
-                left: padding - 6, top: (maxLength == null) ? padding / 2 : 0),
-            child: customText(error!, color: Colors.red),
-          )
-        ]
       ],
     );
   }
