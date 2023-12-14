@@ -15,32 +15,28 @@ class ExpansionTilePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Expansion Tile'),
       ),
-      body: GetBuilder<ExpansionTileController>(builder: (c) {
-        return Column(
-          children: [
-            Expanded(
-              child: ListView.builder(
-                itemCount: c.bikes.length,
-                itemBuilder: (context, index) {
-                  return card('Bike ${index+1}', c.bikes[index]);
-                },
-              ),
-            ),
-          ],
-        );
-      }),
+      body: const Column(
+        children: [
+          // Expanded(
+          //   child: ListView.builder(
+          //     itemCount: c.bikes.length,
+          //     itemBuilder: (context, index) {
+          //       return card('Bike ${index+1}', c.bikes[index]);
+          //     },
+          //   ),
+          // ),
+        ],
+      ),
     );
   }
 
   Widget card(String title, String subtitle) {
     return ExpandableNotifier(
-      
       child: ScrollOnExpand(
-        
         scrollOnExpand: true,
         child: ExpandablePanel(
           header: customText(title),
-          collapsed: SizedBox(),
+          collapsed: const SizedBox(),
           expanded: customText(subtitle),
         ),
       ),

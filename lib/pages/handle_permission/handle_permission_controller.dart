@@ -70,6 +70,24 @@ class HandlePermissionController extends GetxController {
     update();
   }
 
+  Future<void> getFiles() async {
+    try {
+      FilePickerResult? result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['jpg', 'pdf', 'doc'],
+        withData: true,
+        withReadStream: true
+      );
+      if (result != null) {
+        log('Result: ${result.files}');
+      } else {
+        log('User Cancelled');
+      }
+    } catch (e) {
+      log('Error to get files: $e');
+    }
+  }
+
   @override
   void onInit() async {
     WidgetsBinding.instance.addPostFrameCallback((_) async {

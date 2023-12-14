@@ -4,6 +4,7 @@ import 'package:flutter_mini_projects/properties/constant.dart';
 import 'package:flutter_mini_projects/routes/bindings.dart';
 import 'package:flutter_mini_projects/routes/route.dart';
 import 'package:flutter_mini_projects/routes/route_name.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,13 +27,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Colors.black),
+      const SystemUiOverlayStyle(statusBarColor: Colors.black),
     );
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: RouteName.home,
-      getPages: pages,
-      initialBinding: HomeBinding(),
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: RouteName.home,
+        getPages: pages,
+        initialBinding: HomeBinding(),
+      ),
     );
   }
 }

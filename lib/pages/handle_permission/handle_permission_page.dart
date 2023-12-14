@@ -57,6 +57,22 @@ class HandlePermissionPage extends StatelessWidget {
                 color: primaryColor,
               ),
             ),
+            ListTile(
+              onTap: () {
+                c.getFiles();
+              },
+              title: customText(
+                'Access Storage',
+                fontWeight: FontWeight.w500,
+                fontSize: Sizes.s15,
+              ),
+              trailing: Icon(
+                (c.hasPermissionPhotos ?? false)
+                    ? Icons.check_box
+                    : Icons.check_box_outline_blank,
+                color: primaryColor,
+              ),
+            ),
           ],
         ),
       );

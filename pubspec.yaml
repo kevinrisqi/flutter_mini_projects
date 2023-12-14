@@ -29,19 +29,22 @@ environment:
 dependencies:
   agora_rtc_engine: ^6.1.1+1
   animations: ^2.0.7
+  camera: ^0.10.5+5
   cloud_firestore: ^4.8.3
   contacts_service: ^0.6.3
   cupertino_icons: ^1.0.2
   dio: ^5.0.0
   expandable: ^5.0.1
-  file_picker: ^5.2.7
+  file_picker: ^5.5.0
   firebase_core: ^2.15.0
   flutter:
     sdk: flutter
   flutter_countdown_timer: ^4.1.0
-  flutter_screenutil: ^5.6.0
+  flutter_screenutil: ^5.9.0
   font_awesome_flutter: ^10.3.0
   get: ^4.6.5
+  google_fonts: ^6.1.0
+  google_nav_bar: ^5.0.6
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   intl: ^0.18.1

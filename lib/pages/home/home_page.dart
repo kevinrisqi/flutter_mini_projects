@@ -151,7 +151,34 @@ class HomePage extends StatelessWidget {
                       subtitle:
                           'A NoSQL document database that lets you easily store, sync, and query data for your mobile and web apps.',
                       ontap: () {
-                        Get.toNamed(RouteName.timeline);
+                        Get.toNamed(RouteName.cloudFirestore);
+                      },
+                      tileColor: pinkColor,
+                    ),
+                    customListTile(
+                      title: 'Text Recognized',
+                      subtitle:
+                          'Solve common problems in your apps with machine learning',
+                      ontap: () {
+                        Get.toNamed(RouteName.textRecognize);
+                      },
+                      tileColor: blueColor,
+                    ),
+                    customListTile(
+                      title: 'Routing Page',
+                      subtitle:
+                          'Routing Page between page within passing data',
+                      ontap: () {
+                        Get.toNamed(RouteName.routingPage);
+                      },
+                      tileColor: orangeColor,
+                    ),
+                    customListTile(
+                      title: 'Cart Logic Page',
+                      subtitle:
+                          'Create a shopping cart like a e-commerce app',
+                      ontap: () {
+                        Get.toNamed(RouteName.cartPage);
                       },
                       tileColor: pinkColor,
                     ),

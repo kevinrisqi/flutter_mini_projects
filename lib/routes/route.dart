@@ -1,4 +1,6 @@
 import 'package:flutter_mini_projects/pages/agora_video_call/agora_video_call.dart';
+import 'package:flutter_mini_projects/pages/cart_logic_page/view/ui/cart_logic_page.dart';
+import 'package:flutter_mini_projects/pages/cloud_firestore/cloud_firestore_page.dart';
 import 'package:flutter_mini_projects/pages/countdown_timer/countdown_timer_page.dart';
 import 'package:flutter_mini_projects/pages/expansion_tile/expansion_tile_page.dart';
 import 'package:flutter_mini_projects/pages/form_validation/form_validation_page.dart';
@@ -6,7 +8,9 @@ import 'package:flutter_mini_projects/pages/handle_permission/contact_page.dart'
 import 'package:flutter_mini_projects/pages/handle_permission/handle_permission_page.dart';
 import 'package:flutter_mini_projects/pages/home/home_page.dart';
 import 'package:flutter_mini_projects/pages/no_connection/no_connection_main_page.dart';
+import 'package:flutter_mini_projects/pages/routing_page/routing_page.dart';
 import 'package:flutter_mini_projects/pages/scrollable_list/scrollable_list_page.dart';
+import 'package:flutter_mini_projects/pages/text_recognize/text_recognize_page.dart';
 import 'package:flutter_mini_projects/pages/timeline_tile/timeline_tile_page.dart';
 import 'package:flutter_mini_projects/routes/bindings.dart';
 import 'package:flutter_mini_projects/routes/route_name.dart';
@@ -62,5 +66,25 @@ List<GetPage> pages = [
     name: RouteName.timeline,
     page: () => const TimelineTilePage(),
     binding: TimelineTileBinding(),
+  ),
+  GetPage(
+    name: RouteName.cloudFirestore,
+    page: () => const CloudFirestorePage(),
+    binding: CloudFirestoreBinding(),
+  ),
+  GetPage(
+    name: RouteName.textRecognize,
+    page: () => const TextRecognizePage(),
+    binding: TextRecognizeBinding(),
+  ),
+  GetPage(
+    name: RouteName.routingPage,
+    page: () => const RoutingPage(),
+    binding: RoutingPageBinding(),
+  ),
+  GetPage(
+    name: RouteName.cartPage,
+    page: () => const CartLogicPage(),
+    binding: CartLogicBinding(),
   ),
 ];

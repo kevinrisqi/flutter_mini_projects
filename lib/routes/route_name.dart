@@ -10,4 +10,8 @@ abstract class RouteName {
   static const expansion = '/expansion';
   static const agoraVideoCall = '/agora-video-call';
   static const timeline = '/timeline';
+  static const cloudFirestore = '/cloud-firestore';
+  static const textRecognize = '/text-recognize';
+  static const routingPage = '/routing-page';
+  static const cartPage = '/cart-page';
 }
