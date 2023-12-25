@@ -13,8 +13,11 @@ class FormValidationController extends GetxController {
   var emailTextControllerList = [];
   var resultTextController = TextEditingController();
 
+  var formKey = GlobalKey<FormState>();
+  late GlobalKey<FormState> formKeyLate;
+
   Future<void> handleSubmit() async {
-    if (c.formKey.currentState!.validate()) {
+    if (formKey.currentState!.validate()) {
       log('message');
       isLoading.toggle();
       await Future.delayed(const Duration(seconds: 3));

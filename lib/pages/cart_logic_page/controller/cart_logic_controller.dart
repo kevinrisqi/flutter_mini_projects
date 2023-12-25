@@ -1,11 +1,15 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_mini_projects/pages/cart_logic_page/helpers/cart_logic_assets.const.dart';
 import 'package:flutter_mini_projects/pages/cart_logic_page/models/category_model.dart';
 import 'package:flutter_mini_projects/pages/cart_logic_page/models/product_model.dart';
+import 'package:flutter_mini_projects/pages/cart_logic_page/repository/cart_logic_repository.dart';
 import 'package:get/get.dart';
 
 class CartLogicController extends GetxController
     with GetTickerProviderStateMixin {
+  final _repo = CartLogicRepository();
+
   var searchC = TextEditingController();
 
   late TabController tabController;
@@ -28,55 +32,89 @@ class CartLogicController extends GetxController
     CategoryModel(name: 'Deserts'),
   ];
 
-  List<ProductModel> listProduct = [
-    ProductModel(
-      name: 'Burger',
-      type: 'Food',
-      image: CartLogicAsseetsConst.icBurger,
-      stock: 10,
-      price: 13000,
-      description: 'Double Beef Yummy !!!',
-      category: CategoryModel(name: 'Fast Food'),
-    ),
-    ProductModel(
-      name: 'Hotdog',
-      type: 'Food',
-      image: CartLogicAsseetsConst.icHotdog,
-      stock: 3,
-      price: 15000,
-      description: 'Buy 1 Get 1 !!!',
-      category: CategoryModel(name: 'Fast Food'),
-    ),
-    ProductModel(
-      name: 'Pizza',
-      type: 'Food',
-      image: CartLogicAsseetsConst.icPizza,
-      stock: 14,
-      price: 25000,
-      description: 'Get 9 Slice !!!',
-      category: CategoryModel(name: 'Fast Food'),
-    ),
-    ProductModel(
-      name: 'Komo',
-      type: 'Food',
-      image: null,
-      stock: 12,
-      price: 1000,
-      description: 'Crunchy !!!',
-      category: CategoryModel(name: 'Snacks'),
-    ),
-  ];
+  List<ProductModel>? listProduct;
 
-  void incrementQty() {
+  List<ProductModel> listCart = [];
+
+  double selectedPrice = 0;
+
+  Rx<double> grandTotal = 0.0.obs;
+
+  void incrementQty(double price) {
     qty++;
+    selectedPrice = price * qty;
+    log('Price: $selectedPrice');
     update();
   }
 
-  void decrementQty() {
+  void decrementQty(double price) {
     if (qty > 1) {
       qty--;
+      selectedPrice = price * qty;
+      log('Price: $selectedPrice');
       update();
     }
+  }
+
+  void getProduct() async {
+    try {
+      final res = await _repo.fetchProduct();
+      log('Res: $res');
+      listProduct = res;
+      update();
+    } catch (e) {
+      log('Error trying to get Product $e');
+    }
+  }
+
+  /// ****************** Cart ***************** ///
+
+  void addCard(ProductModel product) {
+    bool found = false;
+
+    for (var item in listCart) {
+      if (item.id == product.id) {
+        found = true;
+        item.quantity++;
+        break;
+      }
+    }
+
+    if (!found) {
+      listCart.add(product);
+    }
+
+    for (var item in listCart) {
+      log('Product Name: ${item.title} || Quantity: ${item.quantity}');
+    }
+    log('=============================');
+    log('Cart Length: ${listCart.length}');
+  }
+
+  void checkCart() {
+    for (var item in listCart) {
+      log('Product Name: ${item.title} || Quantity: ${item.quantity}');
+    }
+    log('=============================');
+    log('Cart Length: ${listCart.length}');
+  }
+
+  void addQtyCart(ProductModel product) {
+    product.quantity++;
+    calculateGrandTotal();
+  }
+
+  void minQtyCart(ProductModel product) {
+    if (product.quantity > 1) {
+      product.quantity--;
+      calculateGrandTotal();
+    }
+  }
+
+  void calculateGrandTotal() {
+    grandTotal.value =
+        listCart.fold(0, (p, e) => p + (e.quantity * e.price!).toInt());
+    update();
   }
 
   @override
@@ -93,5 +131,12 @@ class CartLogicController extends GetxController
         update();
       });
     super.onInit();
+  }
+
+  @override
+  void onReady() {
+    getProduct();
+
+    super.onReady();
   }
 }

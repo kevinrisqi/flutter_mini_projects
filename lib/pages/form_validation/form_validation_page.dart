@@ -33,7 +33,7 @@ class FormValidationPage extends StatelessWidget {
         builder: (c) {
           final cFormValid = Get.put(FormValidationController());
           return Form(
-            key: c.formKey,
+            key: cFormValid.formKey,
             child: ListView(
               padding: EdgeInsets.symmetric(horizontal: padding),
               children: [
